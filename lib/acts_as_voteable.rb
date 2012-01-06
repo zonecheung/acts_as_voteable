@@ -14,57 +14,36 @@ module Juixe
           extend Juixe::Acts::Voteable::SingletonMethods
         end
       end
-      
+
       # This module contains class methods
       module SingletonMethods
         def find_votes_cast_by_user(user)
-          voteable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
-          Vote.find(:all,
-            :conditions => ["user_id = ? and voteable_type = ?", user.id, voteable],
-            :order => "created_at DESC"
-          )
+          voteable_type = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
+          Vote.where(:voteable_type => voteable_type).find_votes_cast_by_user(user)
         end
       end
-      
+
       # This module contains instance methods
       module InstanceMethods
         def votes_for
-          votes = Vote.find(:all, :conditions => [
-            "voteable_id = ? AND voteable_type = ? AND vote = TRUE",
-            id, self.type.name
-          ])
-          votes.size
+          self.votes.for.size
         end
-        
+
         def votes_against
-          votes = Vote.find(:all, :conditions => [
-            "voteable_id = ? AND voteable_type = ? AND vote = FALSE",
-            id, self.type.name
-          ])
-          votes.size
+          self.votes.against.size
         end
-        
+
         # Same as voteable.votes.size
         def votes_count
           self.votes.size
         end
-        
+
         def users_who_voted
-          users = []
-          self.votes.each { |v|
-            users << v.user
-          }
-          users
+          self.votes.map(&:user)
         end
-        
+
         def voted_by_user?(user)
-          rtn = false
-          if user
-            self.votes.each { |v|
-              rtn = true if user.id == v.user_id
-            }
-          end
-          rtn
+          self.votes.any? { |v| user.id == v.user_id }
         end
       end
     end
