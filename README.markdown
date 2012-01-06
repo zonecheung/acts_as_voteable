@@ -1,16 +1,17 @@
-ActsAsVoteable
-==============
+# ActsAsVoteable
 
 Allows user to vote on the on models.
 
-== Resources
 
-Install
- * Run the following command:
- Rails 3: rails plugin install https://github.com/tiroc/acts_as_voteable.git
+## Install
 
- * Create a new rails migration and add the following self.up and self.down methods
+* Run the following command:
 
+  Rails 3: rails plugin install https://github.com/tiroc/acts_as_voteable.git
+
+* Create a new rails migration and add the following self.up and self.down methods
+
+`
   def self.up
     create_table :votes do |t|
       t.boolean :voting, :default => false
@@ -27,21 +28,24 @@ Install
   def self.down
     drop_table :votes
   end
+`
 
-== Usage
+## Usage
 
+ Make you ActiveRecord model act as voteable.
 
- * Make you ActiveRecord model act as voteable.
-
+`
   class Model < ActiveRecord::Base
     acts_as_voteable
   end
+`
 
-== Credits
+## Credits
 
 Xelipe - This plugin is heavily influenced by Acts As Commentable.
 
-== More
+## More
 
 http://juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
+
 http://juixe.com/svn/acts_as_voteable
