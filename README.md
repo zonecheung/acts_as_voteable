@@ -13,6 +13,10 @@ gem 'acts_as_voteable', '~> 0.0.3', :git => 'https://github.com/zonecheung/acts_
 
 **Create a new rails migration and add the following self.up and self.down methods**
 
+rails generate acts_as_voteable_migration
+
+or manually:
+
 ```ruby
 def self.up
   create_table :votes do |t|
