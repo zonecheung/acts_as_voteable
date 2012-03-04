@@ -1,0 +1,6 @@
+Description:
+    The migration generator creates a migration to add the activities table to your database and takes no arguments.
+
+Example:
+    ./script/generate acts_as_voteable_migration
+	
