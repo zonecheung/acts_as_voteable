@@ -7,7 +7,9 @@ Allows user to vote on the on models.
 
 **Run the following command:**
 
-Rails 3: rails plugin install https://github.com/zhewen/acts_as_voteable.git
+In Gemfile:
+
+gem 'acts_as_voteable', '~> 0.0.3', :git => 'https://github.com/zonecheung/acts_as_voteable.git'
 
 **Create a new rails migration and add the following self.up and self.down methods**
 
