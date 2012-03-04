@@ -11,7 +11,7 @@ In Gemfile:
 
 gem 'acts_as_voteable', '~> 0.0.3', :git => 'https://github.com/zonecheung/acts_as_voteable.git'
 
-**Create a new rails migration and add the following self.up and self.down methods**
+**Create a new rails migration**
 
 rails generate acts_as_voteable_migration
 
