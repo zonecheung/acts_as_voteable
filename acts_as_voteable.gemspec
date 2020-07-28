@@ -11,8 +11,6 @@ Gem::Specification.new do |s|
   s.description = "Allows user to vote on the on models."
   s.authors     = ['TechKnow']
 
-  s.rubyforge_project = "acts_as_voteable"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
