@@ -1,5 +1,4 @@
 class Vote < ActiveRecord::Base
-
   # NOTE: Votes belong to a user
   belongs_to :user
   belongs_to :voteable, :polymorphic => true
