@@ -1,6 +1,6 @@
 # ActsAsVoteable
 
-Allows user to vote on the on models.
+Allows user to vote on the on models automatically.
 
 
 ## Install
